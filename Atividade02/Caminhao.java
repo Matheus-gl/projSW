@@ -1,12 +1,13 @@
 package Atividade02;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public class Caminhao extends Veiculo {
 
     private int capacidade;
 
-    public Caminhao(String nome, Date dataProducao, double potencia, int capacidade) {
+    public Caminhao(String nome, LocalDate dataProducao, double potencia, int capacidade) {
         super(nome, dataProducao, potencia);
         this.capacidade = capacidade;
         //TODO Auto-generated constructor stub

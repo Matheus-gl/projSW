@@ -1,13 +1,14 @@
 package Atividade02;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public abstract class Veiculo{
     String nome;
-    Date dataProducao;
+    LocalDate dataProducao;
     double potencia;
 
-    public Veiculo(String nome, Date dataProducao, double potencia) {
+    public Veiculo(String nome, LocalDate dataProducao, double potencia) {
         this.nome = nome;
         this.dataProducao = dataProducao;
         this.potencia = potencia;
@@ -21,11 +22,11 @@ public abstract class Veiculo{
         this.nome = nome;
     }
 
-    public Date getDataProducao() {
+    public LocalDate getDataProducao() {
         return dataProducao;
     }
 
-    public void setDataProducao(Date dataProducao) {
+    public void setDataProducao(LocalDate dataProducao) {
         this.dataProducao = dataProducao;
     }
 
@@ -40,6 +41,6 @@ public abstract class Veiculo{
     public abstract int Deslocar();
 
     public abstract String Buzinar();
-    
+
 }
 
