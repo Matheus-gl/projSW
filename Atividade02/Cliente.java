@@ -23,7 +23,7 @@ public class Cliente extends Pessoa {
     }
 
     public boolean devolver (Veiculo v){
-        Date dataDevol = new Date(System.currentTimeMillis());
+        Date dataDevol = new Date(System.currentTimeMillis()); //data Atual
         for (Contrato c : alugueis){
             if (c != null && c.getAlugado().equals(v) && c.getDataDevolucao() == null){
                 c.setDataDevolucao(dataDevol);
