@@ -1,16 +1,14 @@
 package Atividade02;
 
-
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Caminhao extends Veiculo {
 
     private int capacidade;
 
-    public Caminhao(String nome, LocalDate dataProducao, double potencia, int capacidade) {
+    public Caminhao(String nome, Date dataProducao, double potencia, int capacidade) {
         super(nome, dataProducao, potencia);
         this.capacidade = capacidade;
-        //TODO Auto-generated constructor stub
     }
 
     public int getCapacidade(){
@@ -25,9 +23,8 @@ public class Caminhao extends Veiculo {
 
     public int transportar(int carga){
         if(carga <= capacidade){
-            int cargaAtual = getCapacidade() - carga;
-            System.out.println("caminhao esta atualmente carregado com: " + cargaAtual + " toneladas");
-            return cargaAtual;
+            System.out.println("caminhao esta carregado com: " + carga + " toneladas");
+            return carga;
         }else{
             System.out.println(getNome() + " não pode transportar " + carga + " toneladas! Capacidade máxima: " + getCapacidade() + " toneladas.");
             return getCapacidade();
