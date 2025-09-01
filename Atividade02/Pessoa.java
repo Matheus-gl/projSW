@@ -1,5 +1,5 @@
 package Atividade02;
 
-public class Pessoa{
+public abstract class Pessoa{
     String nome;
 }
