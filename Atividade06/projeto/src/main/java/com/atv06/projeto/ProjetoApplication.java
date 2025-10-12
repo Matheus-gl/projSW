@@ -1,38 +1,30 @@
 package com.atv06.projeto;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @SpringBootApplication
+@RestController
 @RequestMapping("/api")
 public class ProjetoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProjetoApplication.class, args);
-	}
+	@Autowired
+    private Calculadora calculadora;
 
 	@PutMapping("/calculadora")
-	public Calculadora criaCalculadora(@RequestParam double v1,@RequestParam double v2,@RequestParam String operacao){
+	public ResponseEntity<?> criaCalculadora(@RequestParam double v1,@RequestParam double v2,@RequestParam String operacao){
+		try {
+            double resultado = calculadora.calcular(v1, v2, operacao);
+            return ResponseEntity.ok(resultado);
+        } catch (IllegalArgumentException | UnsupportedOperationException | ArithmeticException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
 		
-		if (operacao == null || operacao.trim().equals("")){
-			throw new ResponseStatusException(
-				HttpStatus.BAD_REQUEST, "a operacao deve ser preenchida"
-			);
-		}
-		
-		if (v2 == 0 && operacao.trim().equals("divisao")){
-			throw new ResponseStatusException(
-				HttpStatus.BAD_REQUEST, "divisao por zero nao permitida"
-			);
 		}
 
-		return new Calculadora(v1, v2, operacao);
 	}
-
 }
