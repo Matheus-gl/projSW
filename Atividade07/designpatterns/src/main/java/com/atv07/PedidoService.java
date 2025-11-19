@@ -5,13 +5,9 @@ import java.util.List;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
 import com.atv07.ConfigSys.ConfiguracaoSistema;
-import com.atv07.Interfaces.ILogistica;
-import com.atv07.Interfaces.ILogisticaLegado;
 import com.atv07.Interfaces.IPedido;
 import com.atv07.Repositorios.PedidoRepository;
 
